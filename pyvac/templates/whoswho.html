@@ -1,0 +1,34 @@
+  <table id="users" class="table table-bordered table-condensed table-striped table-hover">
+    <thead>
+      <tr>
+        <th>{% trans %}Photo{% endtrans %}</th>
+        <th>{% trans %}Firstname{% endtrans %}</th>
+        <th>{% trans %}Lastname{% endtrans %}</th>
+        <th>{% trans %}Nickname{% endtrans %}</th>
+        <th>{% trans %}Email{% endtrans %}</th>
+        <th>{% trans %}Phone{% endtrans %}</th>
+        <th>{% trans %}Manager{% endtrans %}</th>
+        <th>{% trans %}Country{% endtrans %}</th>
+        <th>{% trans %}Team{% endtrans %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+          <td>{% if user.photo %}
+          <img style="height: 130px; width: 180px;" alt="{{ user.name }}" src="data:image/jpeg;base64,{{ user.photo }}" />
+          {% else %}&nbsp;
+          {% endif %}
+          </td>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.nickname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.mobile }}</td>
+          <td>{{ user.name_manager }}</td>
+          <td>{{ user.country }}</td>
+          <td>{{ user.unit }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
