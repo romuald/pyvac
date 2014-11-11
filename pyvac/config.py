@@ -193,3 +193,9 @@ def includeme(config):
                     route_name=u'request_export',
                     renderer=u'templates/request/exported.html',
                     permission=u'admin_view')
+
+    # who's who
+    config.add_route(u'whoswho', u'/who',)
+    config.add_view(u'pyvac.views.user.Whoswho',
+                    route_name=u'whoswho',
+                    renderer=u'templates/whoswho.html')
