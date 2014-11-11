@@ -283,6 +283,19 @@ class LdapWrapper(object):
         user_data = self.search_user_by_login(login)
         return user_data
 
+    def list_users(self):
+        """ Retrieve users informations """
+        # rebind with system dn
+        self._bind(self.system_DN, self.system_password)
+        # retrieve all users so we can extract OU
+        required = None
+        item = 'cn=*'
+        res = self._search(item, required)
+        users = {}
+        for USER_DN, entry in res:
+            users[USER_DN] = entry
+        return users
+
     def list_ou(self):
         """ Retrieve available organisational units """
         # rebind with system dn
